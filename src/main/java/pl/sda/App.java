@@ -1,11 +1,13 @@
 package pl.sda;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import pl.sda.shape.Cross;
 
 
@@ -22,7 +24,11 @@ public class App extends Application {
         circle.setStroke(Color.rgb(255, 50, 255, 0.5));
         circle.setStrokeWidth(5);
         circle.setOnMouseClicked(event -> {
+            FadeTransition fade = new FadeTransition(Duration.millis(1000), circle);
             circle.setFill(Color.BLUEVIOLET);
+            fade.setFromValue(1);
+            fade.setToValue(0);
+            fade.play();
         });
         Rectangle rectangle = new Rectangle(100, 200, 100,100);
         rectangle.setFill(Color.CADETBLUE);

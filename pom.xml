@@ -31,7 +31,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>pl.sda.App</mainClass>
+                    <mainClass>pl.sda.brick.BrickApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

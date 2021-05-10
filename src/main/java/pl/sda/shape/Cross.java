@@ -12,5 +12,4 @@ public class Cross  extends Group {
         Rectangle rectangle2 = new Rectangle(x, y + (height - strokeWidth)/2, width, strokeWidth);
         this.getChildren().addAll(rectangle1, rectangle2);
     }
-
 }
