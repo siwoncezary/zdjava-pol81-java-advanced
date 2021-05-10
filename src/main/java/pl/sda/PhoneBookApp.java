@@ -84,7 +84,11 @@ public class PhoneBookApp extends Application {
             FileChooser fileChooser = new FileChooser();
             File fileToOpen = fileChooser.showOpenDialog(stage);
             if (fileToOpen != null) {
-                storage = new FileSerialStorage(fileToOpen.getAbsolutePath());
+                if (fileToOpen.getName().substring(fileToOpen.getName().lastIndexOf(".")).equals(".txt")) {
+                    storage = new FileTextStorage(fileToOpen.getAbsolutePath());
+                }else {
+                    storage = new FileSerialStorage(fileToOpen.getAbsolutePath());
+                }
                 list.setItems(FXCollections.observableList(storage.load()));
                 filePath.setText(fileToOpen.getAbsolutePath());
             }
@@ -96,13 +100,11 @@ public class PhoneBookApp extends Application {
             if (fileToSave != null) {
                 if (fileToSave.getName().substring(fileToSave.getName().lastIndexOf(".")).equals(".txt")){
                     storage = new FileTextStorage(fileToSave.getAbsolutePath());
-                    storage.save(list.getItems());
-                    filePath.setText(fileToSave.getAbsolutePath());
                 } else {
                     storage = new FileSerialStorage(fileToSave.getAbsolutePath());
-                    storage.save(list.getItems());
-                    filePath.setText(fileToSave.getAbsolutePath());
                 }
+                storage.save(list.getItems());
+                filePath.setText(fileToSave.getAbsolutePath());
             }
         });
         saveBtn.setMinWidth(80);
