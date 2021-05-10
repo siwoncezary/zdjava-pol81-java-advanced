@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pl.sda.model.Player;
@@ -45,7 +42,7 @@ public class JsonApp extends Application {
             Player player = new Player("KAROL", 100, true, new String[]{"BBB", "FFF"});
             PlayerDto playerDto = new PlayerDto(player);
             Alert info = new Alert(Alert.AlertType.INFORMATION);
-            info.setHeaderText("Konwersja obiektu PlayerDto do łańcucha JSON.");
+            info.setHeaderText("Konwersja obiektu PlayerDto do łańcucha JSON. Poniżej obiekt, na podstawie którego utworzono PlayerDto.");
             info.setContentText(player.toString());
             info.show();
             ObjectMapper mapper = new ObjectMapper();
@@ -93,7 +90,7 @@ public class JsonApp extends Application {
             result.setText("points " + points + "\nname " + name + "\nisActive " + isActive + "\ngames " + gamesList + "\nzip " + zip);
         });
 
-        root.getChildren().addAll(jsonView, treeJsonBtn, valueJsonBtn, jsonBtn, result);
+        root.getChildren().addAll(new Label("Przykładowy łańcuch JSON"),jsonView, treeJsonBtn, valueJsonBtn, jsonBtn, new Label("Wynik przetwarzania"),result);
         Scene scene = new Scene(root, 400, 600);
         stage.setScene(scene);
         stage.show();
